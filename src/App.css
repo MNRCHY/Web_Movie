@@ -1,38 +1,67 @@
-.App {
-  text-align: center;
+
+.NavSection{
+  background-color: #222222;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.BrandLogo{
+  font-weight: 900;
+  color: #dfdfdf;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.BrandLink{
+  text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+span{
+  color: #A80000;
 }
 
-.App-link {
-  color: #61dafb;
+.ActionNav{
+  gap: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.NavButton{
+  width: 125px;
+  border-radius: 15px;
+  background-color: #A80000;
+  color: #dfdfdf;
+  border-style: none;
+}
+
+/* Hero Banner Section */
+
+.CarouselPic{
+  width: 100%;
+}
+
+/* Hero Banner Section End */
+
+/* Popular Section */
+
+.cardLink{
+  text-decoration: none;
+  color: black;
+}
+
+/* Popular Section End */
+
+/* Footer section */
+
+.webFooter{
+  height: 70px;
+  background-color: #222222;
+}
+
+.detailSection{
+  height: 500px;
+  width: 75%;
+  background-color: #222222;
+}
+
+.RecomSection{
+  background-color: #222222;
+}
+
+.bgDarkText{
+  color: #dfdfdf;
 }
