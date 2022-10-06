@@ -1,3 +1,6 @@
+.App{
+  background-color: #333333;
+}
 
 .NavSection{
   background-color: #222222;
@@ -38,9 +41,17 @@ span{
 
 /* Popular Section */
 
+.MovieList{
+  text-decoration: none;
+  color: black;
+}
 .cardLink{
   text-decoration: none;
   color: black;
+}
+
+.cardSection{
+  gap: 5px;
 }
 
 /* Popular Section End */
@@ -52,9 +63,11 @@ span{
   background-color: #222222;
 }
 
+/* Movie Details Section */
+
 .detailSection{
-  height: 500px;
-  width: 75%;
+  height: auto;
+  width: 100%;
   background-color: #222222;
 }
 
@@ -65,3 +78,5 @@ span{
 .bgDarkText{
   color: #dfdfdf;
 }
+
+/* Movie Details Section End */

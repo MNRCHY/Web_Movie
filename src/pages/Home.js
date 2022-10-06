@@ -11,7 +11,7 @@ function Home() {
         <Navigation />
       </header>
 
-      <body>
+      <div>
         
         <div>
           <HeroCarousel />
@@ -21,7 +21,7 @@ function Home() {
           <PopularMovie />
         </div>
 
-      </body>
+      </div>
 
       <footer>
         <FooterSection/>

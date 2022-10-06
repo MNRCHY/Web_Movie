@@ -1,81 +1,45 @@
-import React from 'react'
-import { Card } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react'
+import { Card, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import CardPic1 from '../assets/yejiCard.jpg'
-import CardPic2 from '../assets/ryujinCard.jpg'
-import CardPic3 from '../assets/chaerCard.jpg'
-import CardPic4 from '../assets/yunaCard.jpg'
-import CardPic5 from '../assets/liaCard.jpg'
+import axios from 'axios'
 
 function PopularMovie() {
+    const [movies, setMovies] = useState([])
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_BASE_URL}/trending/movie/week`,{
+            params: {
+                api_key: process.env.REACT_APP_TMDB_KEY
+            }
+        }).then((res) => {
+            // console.log(res.data.results)
+            setMovies(res.data.results)
+        })
+    },[])
   return (
-    <div>
-        <div className='m-4 d-flex justify-content-between'>
-            <h5> Popular Now </h5>
-            <Link>See all</Link>
+    <div className='PopularMovieSection p-3'>
+        <div className='mb-3 d-flex justify-content-between'>
+            <h3 className='text-white'>Popular Movies</h3>
+            <Link className='seeAllLink'> See all </Link>
         </div>
-        <div className='px-4 d-flex justify-content-between'>
-        <Card>
-            <Card.Img src={CardPic1} style={{width:'15rem'}}/>
-            <Card.Body>
-                <Link to='/detail' className='cardLink'>
-                    <Card.Title> Card 1 </Card.Title>
-                </Link>
-                <Card.Text>
-                    Card caption 1
-                </Card.Text>
-            </Card.Body>
-        </Card>
-        <Card>
-            <Card.Img src={CardPic2} style={{width:'15rem'}}/>
-            <Card.Body>
-                <Link to='/detail' className='cardLink'>
-                <Card.Title> Card 2 </Card.Title>
-                </Link>
-                <Card.Text>
-                    Card caption 2
-                </Card.Text>
-            </Card.Body>
-        </Card>
-        <Card>
-            <Card.Img src={CardPic3} style={{width:'15rem'}}/>
-            <Card.Body>
-                <Link to='/detail' className='cardLink'>
-                <Card.Title> Card 3 </Card.Title>
-                </Link>
-                <Card.Text>
-                    Card caption 3
-                </Card.Text>
-            </Card.Body>
-        </Card>
-        <Card>
-            <Card.Img src={CardPic4} style={{width:'15rem'}}/>
-            <Card.Body>
-                <Link to='/detail' className='cardLink'>
-                <Card.Title>
-                    Card 4
-                </Card.Title>
-                </Link>
-                <Card.Text>
-                    Card caption 4
-                </Card.Text>
-            </Card.Body>
-        </Card>
-        <Card>
-            <Card.Img src={CardPic5} style={{width:'15rem'}}/>
-            <Card.Body>
-                <Link to='/detail' className='cardLink'>
-                <Card.Title>
-                    Card 5
-                </Card.Title>
-                </Link>
-                <Card.Text>
-                    Card caption 5
-                </Card.Text>
-            </Card.Body>
-        </Card>
+        <div>
+            <Row>
+                {movies?.map((result, index) => {
+                    return(
+                        <Col className='cardSection m-1' key={index}>
+                            <Link to='/detail/:id' className='MovieList'>
+                            <Card className='p-1' style={{width: '250px'}}>
+                                <img src={`${process.env.REACT_APP_IMG_URL}/${result.poster_path}`} style={{width: 'auto'}} alt={result.original_title}/>
+                                <div className='p-1'>
+                                    <Card.Title> {result.original_title} </Card.Title>
+                                    <Card.Text> {result.overview} </Card.Text>
+                                </div>
+                            </Card>
+                            </Link>
+                        </Col>
+                    )
+                })}
+            </Row>
         </div>
-
     </div>
   )
 }
