@@ -35,6 +35,8 @@ span{
 
 .CarouselPic{
   width: 100%;
+  height: 500px;
+  filter: brightness(40%);
 }
 
 /* Hero Banner Section End */
@@ -79,4 +81,14 @@ span{
   color: #dfdfdf;
 }
 
+.Rating{
+  color: yellow;
+}
+
 /* Movie Details Section End */
+
+/* Search result section */
+.MoviePoster{
+  width: 345px;
+}
+/* Search result section end */

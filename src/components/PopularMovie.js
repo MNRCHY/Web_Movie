@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 function PopularMovie() {
     const [movies, setMovies] = useState([])
+    const {id} = useParams()
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_BASE_URL}/trending/movie/week`,{
             params: {
@@ -26,7 +27,7 @@ function PopularMovie() {
                 {movies?.map((result, index) => {
                     return(
                         <Col className='cardSection m-1' key={index}>
-                            <Link to='/detail/:id' className='MovieList'>
+                            <Link to={`/detail/${result.id}`} className='MovieList'>
                             <Card className='p-1' style={{width: '250px'}}>
                                 <img src={`${process.env.REACT_APP_IMG_URL}/${result.poster_path}`} style={{width: 'auto'}} alt={result.original_title}/>
                                 <div className='p-1'>

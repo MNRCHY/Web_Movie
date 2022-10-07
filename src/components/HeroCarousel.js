@@ -11,7 +11,7 @@ function HeroCarousel() {
                 api_key: process.env.REACT_APP_TMDB_KEY
             }
         }).then((res) => {
-            console.log('trending today =>',res.data.results)
+            // console.log('trending today =>',res.data.results)
             setTodayMovies(res.data.results)
         })
     },[])
@@ -20,8 +20,8 @@ function HeroCarousel() {
         <Carousel >
             {todayMovies.map((result, index) => {
                 return(
-                    <Carousel.Item >
-                    <img src={HeroPic1} className='CarouselPic' alt={result.original_title}/>
+                <Carousel.Item key={index}>
+                    <img src={`${process.env.REACT_APP_IMG_URL}/${result.poster_path}`} className='CarouselPic' alt={result.original_title}/>
                     <Carousel.Caption>
                         <h1 className='d-flex justify-content-center'> {result.original_title} </h1>
                         <p className='d-flex'> {result.overview} </p>
