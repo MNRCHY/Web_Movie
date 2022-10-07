@@ -30,10 +30,10 @@ function PopularMovie() {
                             <Link to={`/detail/${result.id}`} className='MovieList'>
                             <Card className='p-1' style={{width: '250px'}}>
                                 <img src={`${process.env.REACT_APP_IMG_URL}/${result.poster_path}`} style={{width: 'auto'}} alt={result.original_title}/>
-                                <div className='p-1'>
+                                {/* <div className='p-1'>
                                     <Card.Title> {result.original_title} </Card.Title>
-                                    <Card.Text> {result.overview} </Card.Text>
-                                </div>
+                                    <Card.Text> <strong>Release date:</strong> <br/> {result.release_date} </Card.Text>
+                                </div> */}
                             </Card>
                             </Link>
                         </Col>

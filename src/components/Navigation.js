@@ -19,12 +19,14 @@ function Navigation() {
             <Form className=' ActionNav d-flex justify-content-between'>
               <div className='searchSection d-flex me-4'>
                 <Form.Control onChange={(e) => setSearch(e.target.value)} type='text' placeholder='Search...' className='searchForm'></Form.Control>
-                <button onClick={()=> navigate(`/result/${search}`)}>Search</button>
+                <button onClick={()=> navigate(`/result/${search}`)} className='SearchButton ms-2'>Search</button>
               </div>
-              
-              <button onClick={() => navigate('/signin')} className='NavButton'> Sign In </button>
-              <button onClick={() => navigate('/signup')} className='NavButton'> Sign Up </button>
             </Form>
+
+            <div className='AccButton'>
+            <button onClick={() => navigate('/signin')} className='NavButton'> Sign In </button>
+            <button onClick={() => navigate('/signup')} className='NavButton'> Sign Up </button>
+            </div>
         </Navbar>
     </div>
   )

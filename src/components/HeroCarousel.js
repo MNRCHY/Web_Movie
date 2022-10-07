@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Carousel } from 'react-bootstrap'
 import HeroPic1 from '../assets/yeji1.jpg'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 function HeroCarousel() {
     const [todayMovies, setTodayMovies] = useState([])
@@ -17,14 +18,17 @@ function HeroCarousel() {
     },[])
   return (
     <div>
-        <Carousel >
+        <Carousel>
             {todayMovies.map((result, index) => {
                 return(
                 <Carousel.Item key={index}>
-                    <img src={`${process.env.REACT_APP_IMG_URL}/${result.poster_path}`} className='CarouselPic' alt={result.original_title}/>
+                    <img src={`${process.env.REACT_APP_IMG_URL}/${result.backdrop_path}`} className='CarouselPic' alt={result.original_title}/>
                     <Carousel.Caption>
-                        <h1 className='d-flex justify-content-center'> {result.original_title} </h1>
-                        <p className='d-flex'> {result.overview} </p>
+                        <h1 className='d-flex'> {result.original_title} </h1>
+                        <p className='d-flex me-5' style={{textAlign:'left'}}> {result.overview} </p>
+                        <div className='d-flex my-3'>
+                        <Link to={`/detail/${result.id}`} className='CarouselButton'>See more</Link>
+                        </div>
                     </Carousel.Caption>
                 </Carousel.Item>
                 )

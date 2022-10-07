@@ -14,7 +14,7 @@ function MovieDetail() {
                 api_key : process.env.REACT_APP_TMDB_KEY
             }
         }).then ((res) => {
-            // console.log(res.data)
+            console.log(res.data)
             setMovieInfo(res.data)
         })
     },[])

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navigation from '../components/Navigation'
 import FooterSection from '../components/FooterSection'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Card, Col, Row } from 'react-bootstrap'
 import CardPic from '../assets/yejiCard.jpg'
 
@@ -29,13 +29,15 @@ function SearchResult() {
                 searchResult?.map((result,index) => {
                     return(
                     <Col className='mb-2' key={index}>
+                        <Link to={`/detail/${result.id}`} className='MovieList'>
                         <Card className='p-2' style={{width:'250px', height:'auto'}}>
                             <Card.Img src={`${process.env.REACT_APP_IMG_URL}/${result.poster_path}`}/>
-                            <div>
+                            {/* <div>
                                 <Card.Title>{result.original_title}</Card.Title>
                                 <Card.Text> {result.release_date}</Card.Text>
-                            </div>
+                            </div> */}
                         </Card>
+                        </Link>
                     </Col>
                     )
                 })
