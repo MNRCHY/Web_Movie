@@ -10,7 +10,6 @@ function Navigation() {
 
     useEffect(() => {
       const getToken = localStorage.getItem('token')
-      console.log(`token navbar ${getToken}`)
       setToken(getToken)
     },[])
 

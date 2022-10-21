@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Button, Form, Stack } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 function SignUp() {
@@ -10,6 +10,7 @@ function SignUp() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passConfirm, setPassConfirm] = useState('')
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -40,6 +41,7 @@ function SignUp() {
         if (res.data.token) {
           localStorage.setItem('token', res.data.token)
           alert('Registrasi Berhasil')
+          navigate('/')
         }
       } catch (error) {
         alert(error.response.data.message)
@@ -58,7 +60,7 @@ function SignUp() {
 
               <Stack gap={2}>
                 <div className='d-flex justify-content-center text-white mb-4'>
-                  <h4> <strong>Register</strong> </h4>
+                  <h2> <strong>REGISTER</strong> </h2>
                 </div>
 
                 <Form.Control type='name' placeholder='Name' value={name} onChange={(e) => setName(e.target.value)}/>

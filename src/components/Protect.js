@@ -1,15 +1,39 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import React, { useEffect } from 'react'
+import { Navigate, useNavigate } from 'react-router-dom'
 
-function Protect() {
+function Protect({children}) {
 
     const navigate = useNavigate()
 
-    const token = localStorage.getItem('token') 
+    const token = localStorage.getItem('token')
 
-  return (
-    <div>Protect</div>
-  )
+    useEffect (() => {
+        (async () => {
+            if (token) {
+                try {
+                    await axios.get(
+                        'https://challenge6-backend.herokuapp.com/api/v1/auth/me',
+                        {
+                            headers: {
+                                Authorization: `Bearer ${token}`
+                            }
+                        }
+                    )
+                } catch (error) {
+                    if (error.response.status === 401){
+                        localStorage.removeItem('token')
+                        navigate('/login')
+                    }
+                }
+            }
+        })()
+    }, [token, navigate])
+
+    if(!token){
+        return <Navigate to={'/login'}/>
+    }
+  return children
 }
 
 export default Protect

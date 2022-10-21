@@ -1,13 +1,14 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Button, Carousel, Form, Stack } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function SignIn() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [token, setToken] = useState(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getToken = localStorage.getItem('token')
@@ -36,6 +37,7 @@ function SignIn() {
         if (res.data.token){
           localStorage.setItem('token', res.data.token)
           setToken(res.data.token)
+          navigate('/')
         }
       } catch (error) {
         alert(error.response.data.message)
@@ -62,7 +64,7 @@ function SignIn() {
                           <Stack gap={2}>
             
                             <div className='d-flex justify-content-center text-white mb-4'>
-                              <h4> <strong>LOGIN</strong> </h4>
+                              <h2> <strong>LOGIN</strong> </h2>
                             </div>
             
                             <Form.Control type='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control>

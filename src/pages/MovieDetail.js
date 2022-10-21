@@ -14,7 +14,6 @@ function MovieDetail() {
                 api_key : process.env.REACT_APP_TMDB_KEY
             }
         }).then ((res) => {
-            console.log(res.data)
             setMovieInfo(res.data)
         })
     },[])
@@ -38,7 +37,6 @@ function MovieDetail() {
                         <div>
                             <p className='m-3 bgDarkText'><strong>Release date:</strong> <br/> {movieInfo.release_date}</p>
                         </div>
-                        {/* <p className='ms-3 bgDarkText'> {movieInfo.overview} </p> */}
                         <p className='movieOverview ms-3 bgDarkText'><strong>Synopsis:</strong> <br/> {movieInfo.overview} </p>
                         <p className='movieOverview ms-3 bgDarkText'><strong>Runtime:</strong> <br/> {movieInfo.runtime} minutes </p>
                     </div>
