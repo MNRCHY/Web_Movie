@@ -1,14 +1,23 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Form, Navbar } from 'react-bootstrap'
+import { Button, Form, Navbar } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import thumbnailEa from '../assets/yejiCard.jpg'
 function Navigation() {
     const navigate = useNavigate()
     const [search, setSearch] = useState()
-    
+    const [token, setToken] = useState(null)
 
+    useEffect(() => {
+      const getToken = localStorage.getItem('token')
+      console.log(`token navbar ${getToken}`)
+      setToken(getToken)
+    },[])
 
+    const handleLogout = () => {
+      localStorage.removeItem('token')
+      setToken(null)
+    }
   return (
     <div>
         <Navbar className='NavSection p-4 d-flex justify-content-between' >
@@ -23,10 +32,20 @@ function Navigation() {
               </div>
             </Form>
 
-            <div className='AccButton'>
-            <button onClick={() => navigate('/signin')} className='NavButton'> Sign In </button>
-            <button onClick={() => navigate('/signup')} className='NavButton'> Sign Up </button>
-            </div>
+            {!token ?(
+              <div className='AccButton'>
+                <button onClick={() => navigate('/login')} className='NavButton'> Sign In </button>
+                <button onClick={() => navigate('/register')} className='NavButton'> Sign Up </button>
+              </div>
+            ):(
+              <div>
+                <Button variant='danger' onClick={handleLogout}>Logout</Button>
+              </div>
+            )}
+            {/* <div className='AccButton'>
+            <button onClick={() => navigate('/login')} className='NavButton'> Sign In </button>
+            <button onClick={() => navigate('/register')} className='NavButton'> Sign Up </button>
+            </div> */}
         </Navbar>
     </div>
   )

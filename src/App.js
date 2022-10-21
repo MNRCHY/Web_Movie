@@ -14,8 +14,8 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/detail/:id' element={<MovieDetail/>}/>
         <Route path='/result/:id' element={<SearchResult/>}/>
-        <Route path='/signin' element={<SignIn/>}/>
-        <Route path='/signup' element={<SignUp/>}/>
+        <Route path='/login' element={<SignIn/>}/>
+        <Route path='/register' element={<SignUp/>}/>
       </Routes>
     </div>
   );

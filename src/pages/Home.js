@@ -23,7 +23,7 @@ function Home() {
 
       </div>
 
-      <footer>
+      <footer >
         <FooterSection/>
       </footer>
     </div>

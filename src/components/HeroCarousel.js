@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Carousel } from 'react-bootstrap'
-import HeroPic1 from '../assets/yeji1.jpg'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
