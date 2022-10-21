@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Button, Carousel, Form, Stack } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
+import GoogleLogin from '../components/GoogleLogin'
 
 function SignIn() {
 
@@ -31,7 +32,7 @@ function SignIn() {
       try {
         const res = await axios.post(
           // ntar masukkin file env
-          'https://challenge6-backend.herokuapp.com/api/v1/auth/login',
+          `${process.env.REACT_APP_AUTH_API}/api/v1/auth/login`,
           data
         )
         if (res.data.token){
@@ -74,7 +75,10 @@ function SignIn() {
                             <div className='mt-4 d-flex justify-content-center'>
                               <p className='text-white'>Login with :</p>
                             </div>
-                            <Button>Google</Button>
+                            {/* <Button>Google</Button> */}
+                            <div className='d-flex justify-content-center'>
+                            <GoogleLogin setToken={setToken}/>
+                            </div>
             
                             <div className='d-flex justify-content-center text-white mt-4'>
                               <p> Don't have an account? </p>

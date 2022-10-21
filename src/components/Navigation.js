@@ -2,7 +2,6 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Button, Form, Navbar } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
-import thumbnailEa from '../assets/yejiCard.jpg'
 function Navigation() {
     const navigate = useNavigate()
     const [search, setSearch] = useState()

@@ -13,7 +13,7 @@ function Protect({children}) {
             if (token) {
                 try {
                     await axios.get(
-                        'https://challenge6-backend.herokuapp.com/api/v1/auth/me',
+                        `${process.env.REACT_APP_AUTH_API}/api/v1/auth/me`,
                         {
                             headers: {
                                 Authorization: `Bearer ${token}`

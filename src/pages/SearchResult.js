@@ -4,7 +4,6 @@ import FooterSection from '../components/FooterSection'
 import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
 import { Card, Col, Row } from 'react-bootstrap'
-import CardPic from '../assets/yejiCard.jpg'
 
 function SearchResult() {
     const [searchResult, setSearchResult] = useState([])

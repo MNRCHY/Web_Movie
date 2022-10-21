@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { Button, Form, Stack } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
+import { useGoogleLogin } from '@react-oauth/google'
 
 
 function SignUp() {
@@ -35,7 +36,7 @@ function SignUp() {
       console.log(data)
       try {
         const res = await axios.post(
-          'https://challenge6-backend.herokuapp.com/api/v1/auth/register',
+          `${process.env.REACT_APP_AUTH_API}/api/v1/auth/register`,
           data
         )
         if (res.data.token) {
