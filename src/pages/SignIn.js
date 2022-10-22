@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Button, Carousel, Form, Stack } from 'react-bootstrap'
+import { Button, Form, Stack } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import GoogleLogin from '../components/GoogleLogin'
 

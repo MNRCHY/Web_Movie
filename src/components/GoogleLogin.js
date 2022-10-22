@@ -7,13 +7,12 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 function GoogleLogin({setToken}) {
-    const navigate = useNavigate
+    const navigate = useNavigate()
     const googleLogin = useGoogleLogin({
-        onSuccess: async (res) => {
-            console.log(res)
+        onSuccess: async (response) => {
             try {
                 const data = {
-                    access_token: res.access_token
+                    access_token: response.access_token
                 }
                 const res = await axios.post(
                   `${process.env.REACT_APP_AUTH_API}/api/v1/auth/google`,
@@ -22,16 +21,17 @@ function GoogleLogin({setToken}) {
                 if (res.data.token){
                   localStorage.setItem('token', res.data.token)
                   setToken(res.data.token)
-                  alert('oke')
-                //   navigate('/')
+                //   alert('Login google berhasil')
+                  navigate('/')
                 }
               } catch (error) {
+
                 alert(error.response.data.message)
                 
               }
         },
         onError: (err) =>{
-
+            alert(err)
         }
     })
   return (
